@@ -18,6 +18,7 @@ from pptx.util import Inches, Pt
 
 SOURCE = Path("FY27 Tagging and Tracking Training Deck.md")
 OUTPUT = Path("FY27 Tagging and Tracking Training Deck.pptx")
+FOOTER_TITLE = "FY27 Tagging and Tracking Training"
 
 BLUE = RGBColor(0, 85, 150)
 DARK = RGBColor(31, 41, 55)
@@ -109,7 +110,7 @@ def add_footer(prs: Presentation, slide, num: int) -> None:
     frame = box.text_frame
     frame.clear()
     paragraph = frame.paragraphs[0]
-    paragraph.text = f"FY27 Tagging and Tracking Training | Repository-backed draft | Slide {num}"
+    paragraph.text = f"{FOOTER_TITLE} | Repository-backed draft | Slide {num}"
     paragraph.font.size = Pt(7)
     paragraph.font.color.rgb = GRAY
     paragraph.alignment = PP_ALIGN.RIGHT
