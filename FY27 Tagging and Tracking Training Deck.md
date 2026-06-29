@@ -60,7 +60,97 @@ Speaker notes:
 
 ---
 
-## Slide 5: Current-state URL anatomy
+## Slide 5: Future-state measurement model: CTT plus UTM
+
+Future-state tracking should use both value families with clearer roles:
+
+- CTT values identify the marketing initiative, traffic blueprint, offer, or event context.
+- UTM values identify the digital traffic path: channel, platform/vendor, campaign, and creative.
+- Workfront remains the preferred place to automate values and reduce manual URL building.
+- Adobe and marketing effectiveness reporting use standardized UTMs to compare channel and source performance.
+- Lead, nurture, VDC, and seller context continue to depend on CTT-aligned metadata.
+
+Speaker notes:
+- Source basis: the FY27 overview deck positions tagging and tracking as the connective tissue between marketing spend, customer engagement, lead routing, pipeline reporting, and seller context.
+
+---
+
+## Slide 6: How CTT values will be used
+
+| CTT value | Future usage | User guidance |
+|---|---|---|
+| Activity ID / CCID | Campaign, program, lead scoring, nurture, pipeline, and VDC alignment | Use for marketing initiatives expected to generate pipeline or enter scoring/nurture |
+| Drive To ID / DTID | Channel or vehicle that drives the customer to Cisco-owned web properties | Use for external traffic-driving links; do not treat Cisco.com as the vehicle |
+| Offer ID | Gated offer or asset consumed before lead generation | Add in the gated offer page HTML, not as a normal URL parameter |
+| Event ID / EID | Event or integrated activity context | Use for event integrations, static data, manual uploads, and relevant non-URL sources |
+
+Speaker notes:
+- The old CTT deck states IDs are captured for all marketing sources, not just digital. That means CTT continues to support offline, static, manual-upload, event, and integration scenarios where UTMs alone are insufficient.
+
+---
+
+## Slide 7: How UTM values will be used
+
+| UTM value | Future usage | Cisco alignment from source decks |
+|---|---|---|
+| `utm_id` | Universal ID carrying reporting attributes | Activity ID today; future Workfront Channel ID when available |
+| `utm_medium` | Marketing method or channel | Vehicle / channel classification |
+| `utm_source` | Platform, website, vendor, or source | Sub-vehicle / vendor classification |
+| `utm_campaign` | Campaign or promotion grouping | Future campaign-level strategy; not required today |
+| `utm_creative` | Creative or placement-level detail | Paid creative attribution where required |
+
+Speaker notes:
+- The UTM overview deck describes the goal as automated Universal IDs and UTM codes, standard Adobe reporting, Ace reporting alignment, and one standard tool to create and manage IDs and UTM values.
+
+---
+
+## Slide 8: Future URL direction
+
+Current hybrid URL:
+
+```text
+URL?ccid=[ccid]&dtid=[dtid]&utm_id=[ccid]&utm_medium=[medium]&utm_source=[source]
+```
+
+Future direction after Workfront Channel IDs are available:
+
+```text
+URL?utm_id=[workfront-channel-id]&utm_medium=[medium]&utm_source=[source]
+```
+
+Still conditional:
+
+- Add `utm_creative=%ecid!` only for channels that require creative-level attribution.
+- Add `utm_campaign` only after the organization-wide campaign strategy is defined.
+- Keep CTT values in the correct system or placement when they still power lead, nurture, offer, event, or static-data use cases.
+
+Speaker notes:
+- Repository source says future Workfront Channel IDs will replace the `ccid` value in `utm_id`, `dtid` will be replaced by `utm_source` and `utm_medium`, and both `dtid` and `ccid` can be removed at that time.
+
+---
+
+## Slide 9: What users should do differently in the future
+
+Do:
+
+- Let Workfront or the approved builder generate UTM values whenever possible.
+- Use CTT IDs for campaign, drive-to, offer, event, static-data, and lead-flow context.
+- Use UTMs for digital traffic attribution and channel/source optimization.
+- Escalate when a required source, medium, or CTT value does not exist.
+
+Do not:
+
+- Add CTT IDs to internal Cisco.com URLs or internal CTAs.
+- Put Offer IDs into ordinary URL parameters when the offer should be tagged in page HTML.
+- Create local `utm_medium` or `utm_source` variants.
+- Assume UTMs replace every CTT use case; CTT still supports non-digital and lead-context scenarios.
+
+Speaker notes:
+- This combines the CTT key takeaways with the UTM transition logic: UTMs improve standardized digital attribution, while CTT values still preserve campaign, offer, event, and lead-generation context.
+
+---
+
+## Slide 10: Current-state URL anatomy
 
 Every standard tracking URL must include:
 
@@ -80,7 +170,7 @@ Speaker notes:
 
 ---
 
-## Slide 6: What each required value does
+## Slide 11: What each required value does
 
 | Value | Purpose | Training takeaway |
 |---|---|---|
@@ -95,7 +185,7 @@ Speaker notes:
 
 ---
 
-## Slide 7: When to use Campaign Tagging and Tracking IDs
+## Slide 12: When to use Campaign Tagging and Tracking IDs
 
 Use `ccid` and `dtid` for:
 
@@ -114,7 +204,7 @@ Speaker notes:
 
 ---
 
-## Slide 8: When to use UTM parameters
+## Slide 13: When to use UTM parameters
 
 Use UTMs whenever an activation drives traffic to a Cisco central marketing-owned property.
 
@@ -137,7 +227,7 @@ Speaker notes:
 
 ---
 
-## Slide 9: Use the right build path
+## Slide 14: Use the right build path
 
 | Situation | Recommended path | Why |
 |---|---|---|
@@ -152,7 +242,7 @@ Speaker notes:
 
 ---
 
-## Slide 10: Global tagging rules
+## Slide 15: Global tagging rules
 
 - All UTM values must be lowercase.
 - Use hyphens instead of spaces.
@@ -171,7 +261,7 @@ Speaker notes:
 
 ---
 
-## Slide 11: Approved `utm_medium` values
+## Slide 16: Approved `utm_medium` values
 
 - `paid-direct`
 - `programmatic`
@@ -194,7 +284,7 @@ Speaker notes:
 
 ---
 
-## Slide 12: `utm_source` depends on channel
+## Slide 17: `utm_source` depends on channel
 
 `utm_source` identifies the vendor or platform within the channel.
 
@@ -213,7 +303,7 @@ Speaker notes:
 
 ---
 
-## Slide 13: Channel-specific rules users often miss
+## Slide 18: Channel-specific rules users often miss
 
 - Paid Programmatic:
   - Show only DV360 and YouTube in Workfront today.
@@ -232,7 +322,7 @@ Speaker notes:
 
 ---
 
-## Slide 14: Precedence and persistence logic - FY27 edit slide
+## Slide 19: Precedence and persistence logic - FY27 edit slide
 
 Repository-backed rule:
 
@@ -255,7 +345,7 @@ Speaker notes:
 
 ---
 
-## Slide 15: What happens when tagging is wrong
+## Slide 20: What happens when tagging is wrong
 
 Incorrect or inconsistent tagging can cause:
 
@@ -272,7 +362,7 @@ Speaker notes:
 
 ---
 
-## Slide 16: Example - correct paid social URL
+## Slide 21: Example - correct paid social URL
 
 Scenario:
 
@@ -299,7 +389,7 @@ Speaker notes:
 
 ---
 
-## Slide 17: Example - correct email URL
+## Slide 22: Example - correct email URL
 
 Scenario:
 
@@ -325,7 +415,7 @@ Speaker notes:
 
 ---
 
-## Slide 18: Incorrect examples and impacts
+## Slide 23: Incorrect examples and impacts
 
 | Incorrect pattern | Impact |
 |---|---|
@@ -341,7 +431,7 @@ Speaker notes:
 
 ---
 
-## Slide 19: User checklist before launch
+## Slide 24: User checklist before launch
 
 Before a URL is used, confirm:
 
@@ -359,10 +449,13 @@ Speaker notes:
 
 ---
 
-## Slide 20: Where to go for updates
+## Slide 25: Where to go for updates
 
 - Workfront intake mappings: `Source and Mediums.xlsx`
 - Repository source document: `UTM Framework New Training.md`
+- CTT source context: `Tagging & Tracking Overview - FY27 New Training.pptx`
+- Historical CTT usage context: `Creating your Activity ID - Old Training Presentation.pptx`
+- Historical UTM strategy context: `UTM Overview - Old Training.pptx`
 - Generated training deck: `FY27 Tagging and Tracking Training Deck.pptx`
 - Editable deck source: `FY27 Tagging and Tracking Training Deck.md`
 
@@ -371,6 +464,8 @@ Open items for FY27:
 - Confirm final precedence order.
 - Confirm final persistence behavior by reporting surface.
 - Confirm when CCID/DTID retirement criteria are met.
+- Confirm the final future-state Workfront Channel ID naming and handoff process.
+- Confirm whether `utm_campaign` becomes active and what naming convention it should follow.
 - Confirm any new approved `utm_source` values.
 
 Speaker notes:
