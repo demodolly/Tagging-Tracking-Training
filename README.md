@@ -1,7 +1,22 @@
 # Tagging-Tracking-Training
 This is a repository with Powerpoints, Excel and MD files that will help me prepare my Tagging and Tracking Training Documention
 
-## FY27 training deck
+## Tagging & Tracking Overview — FY27 (primary training deck)
+
+- Editable PowerPoint: `Tagging & Tracking Overview - FY27.pptx`
+- Editable source outline: `Tagging & Tracking Overview - FY27.md`
+- Update script (preserves Cisco template): `update_fy27_overview_deck.py`
+- Editorial review notes: `Tagging & Tracking Overview - FY27 - Editorial Guide.md`
+
+To apply narrative fixes from the Markdown outline to the template deck:
+
+```bash
+python3 update_fy27_overview_deck.py
+```
+
+The script backs up the original deck to `Tagging & Tracking Overview - FY27.backup.pptx` on first run.
+
+## FY27 training deck (repository-backed reference deck)
 
 - Editable PowerPoint: `FY27 Tagging and Tracking Training Deck.pptx`
 - Editable source outline: `FY27 Tagging and Tracking Training Deck.md`
