@@ -16,6 +16,20 @@ python3 update_fy27_overview_deck.py
 
 The script backs up the original deck to `Tagging & Tracking Overview - FY27.backup.pptx` on first run.
 
+## Tagging & Tracking Overview — FY27 Semi Final (primary stakeholder deck)
+
+- Editable PowerPoint: `Tagging & Tracking Overview - FY27 - Semi Final.pptx`
+- Purpose & Outcome review: `Tagging & Tracking Overview - FY27 - Semi Final - Purpose Outcome Review.md`
+- Update script (preserves Cisco template): `update_semi_final_deck.py`
+
+To re-apply Purpose/Outcome alignment patches:
+
+```bash
+python3 update_semi_final_deck.py
+```
+
+Backup: `Tagging & Tracking Overview - FY27 - Semi Final.backup.pptx`
+
 ## FY27 training deck (repository-backed reference deck)
 
 - Editable PowerPoint: `FY27 Tagging and Tracking Training Deck.pptx`
